@@ -1,0 +1,48 @@
+import { Text, View, StyleSheet, ScrollView, FlatList } from 'react-native';
+import Constants from 'expo-constants';
+
+import Title from '../components/Title'
+import { useContext } from 'react';
+import { FavoritesContext } from '../contexts/FavoritesContext';
+import CardFav from '../components/CardFav';
+
+export default function Favorites() {
+  const { favoritos } = useContext(FavoritesContext)
+
+  return (
+    <View style={styles.container}>
+
+      <Title text='Favoritos' />
+      <FlatList style={styles.list} vertical data={favoritos} renderItem={({item}) => <CardFav filme={item} />} /> 
+
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight + 20,
+    backgroundColor: '#2d2d2d',
+    padding: 8
+  },
+  section:{
+    flexDirection: 'row',
+    flexGrow: 0,
+    marginVertical: 12
+  },
+  list:{
+    margin: 40,
+    alignSelf: 'center'
+  }
+});
+
+
+
+
+
+
+
+
+
+
